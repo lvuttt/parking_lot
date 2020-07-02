@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 # Add script to:
+
+
 # * Install dependencies
+apt-get install ruby-full
+gem install bundler
+bundle install
+
 
 # * Build/Compile
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-go build -o parking_lot DIR/../.
+go test ./...
+go build -o parking_lot $DIR/../.
+
 
 # * Run Test Suit to validate
-go test ./...
+$DIR/run_functional_tests
 
-#
+
 # After this is run, bin/parking_lot
 # should Just Work.
