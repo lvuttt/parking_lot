@@ -1,7 +1,14 @@
+#!/usr/bin/env bash
 # Add script to:
 # * Install dependencies
+
 # * Build/Compile
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+go build -o parking_lot DIR/../.
+
 # * Run Test Suit to validate
+go test ./...
+
 #
 # After this is run, bin/parking_lot
 # should Just Work.
