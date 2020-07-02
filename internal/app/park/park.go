@@ -28,7 +28,6 @@ func New(n int) *Park {
 		}
 	}
 	park.Stdout = append(park.Stdout, fmt.Sprintf("Created a parking lot with %v slots\n", n))
-	// fmt.Printf("Created a parking lot with %v slots\n", n)
 	return &park
 }
 
@@ -39,12 +38,10 @@ func (p *Park) Park(color, registryNum string) {
 			p.Slots[index].Color = color
 			p.Slots[index].RegistryNum = registryNum
 			p.Stdout = append(p.Stdout, fmt.Sprintf("Allocated slot number: %v\n", p.Slots[index].Number))
-			// fmt.Printf("Allocated slot number: %v\n", p.Slots[index].Number)
 			return
 		}
 	}
 	p.Stdout = append(p.Stdout, fmt.Sprintf("Sorry, parking lot is full\n"))
-	// fmt.Println("Sorry, parking lot is full")
 }
 
 func (p *Park) Leave(n int) {
@@ -58,17 +55,14 @@ func (p *Park) Leave(n int) {
 	}
 	// TODO: check is empty
 	p.Stdout = append(p.Stdout, fmt.Sprintf("Slot number %v is free\n", n))
-	// fmt.Printf("Slot number %v is free\n", s.Number)
 }
 
 func (p *Park) Status() {	
 	stdout := []string{}
 	stdout = append(stdout, fmt.Sprintf("Slot No.    Registration No    Colour\n"))
-	// fmt.Println("Slot No.		Registration No			Colour")
 	for _, slot := range p.Slots {
 		if !slot.Empty {
 			stdout = append(stdout, fmt.Sprintf("%v           %s      %s\n", slot.Number, slot.RegistryNum, slot.Color))
-			// fmt.Printf("%v			%s			%s\n", slot.Number, slot.RegistryNum, slot.Color)
 		}
 	}
 	concatStdout := strings.Join(stdout, "")
@@ -85,7 +79,6 @@ func (p *Park) GetAllSlotNumberByColor(color string) {
 	message := strings.Join(slotNum, ", ")
 	if message == "" {
 		p.Stdout = append(p.Stdout, "Not found\n")
-		// fmt.Println("Not found")
 		return
 	}
 	p.Stdout = append(p.Stdout, message + "\n")
@@ -101,7 +94,6 @@ func (p *Park) GetAllRegistryNumberByColor(color string) {
 	message := strings.Join(registryNumbers, ", ")
 	if message == "" {
 		p.Stdout = append(p.Stdout, "Not found\n")
-		// fmt.Println("Not found")
 		return
 	}
 	p.Stdout = append(p.Stdout, message + "\n")
@@ -115,7 +107,6 @@ func (p *Park) GetSlotNumberByRegistryNumber(registryNumber string) {
 		}
 	}
 	p.Stdout = append(p.Stdout, fmt.Sprintf("Not found\n"))
-	// fmt.Println("Not found")
 	return
 }
 
